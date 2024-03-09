@@ -25,9 +25,13 @@ export default function CustomChessboard({
           promotion?: "q" | "r" | "b" | "n";
         }
   ) {
-    const result = game.current.move(move);
-    setGamePosition(game.current.fen());
-    return result; // null if the move was illegal, the move object if the move was legal
+    try {
+      const result = game.current.move(move);
+      setGamePosition(game.current.fen());
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 
   function makeRandomMove() {
@@ -50,9 +54,7 @@ export default function CustomChessboard({
     });
     // illegal move
     if (move === null) return false;
-    setTimeout(() => {
-      afterFirstMove(game.current);
-    }, 300);
+    afterFirstMove(game.current);
     return true;
   }
 
