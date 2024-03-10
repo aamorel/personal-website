@@ -4,7 +4,7 @@ import { Chessboard } from "react-chessboard";
 
 interface CustomChessboardProps {
   initialPosition?: string;
-  afterFirstMove: (game: Chess) => void;
+  afterFirstMove: (game: Chess) => boolean;
 }
 
 export default function CustomChessboard({
@@ -26,7 +26,7 @@ export default function CustomChessboard({
         }
   ) {
     try {
-      const result = game.current.move(move);
+      game.current.move(move);
       setGamePosition(game.current.fen());
       return true;
     } catch (error) {
@@ -54,7 +54,12 @@ export default function CustomChessboard({
     });
     // illegal move
     if (move === null) return false;
-    afterFirstMove(game.current);
+    const didTransition = afterFirstMove(game.current);
+    if (!didTransition) {
+      // Set back to initial position
+      game.current.undo();
+      setGamePosition(game.current.fen());
+    }
     return true;
   }
 
