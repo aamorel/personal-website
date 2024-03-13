@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import { Tooltip } from "react-tooltip";
 import { SocialIcon } from "react-social-icons";
 import SideProjects from "./components/SideProjects";
+import WaveText from "./components/WaveText";
 
 const problems: Problem[] = [
   {
@@ -16,7 +17,11 @@ const problems: Problem[] = [
     problem: "1k5r/8/1K6/8/8/8/6b1/7Q w - - 0 1",
     hint: "Black rook is undefended and the white queen is ready to take it out",
   },
-  { text: "Medium", problem: "1k5r/8/1K6/8/8/8/6b1/7Q w - - 0 1", hint: "" },
+  {
+    text: "You want to see more, solve this one",
+    problem: "1k2n2r/8/1K6/P7/8/8/6B1/1RR4Q w - - 0 1",
+    hint: "White king seems to be on the way",
+  },
 ];
 
 const enum NavigationState {
@@ -123,7 +128,7 @@ function App() {
               }}
               className="text-2xl font-bold text-center mb-8"
             >
-              {problems[problemIndex].text}
+              <WaveText text={problems[problemIndex % problems.length].text} />
             </motion.p>
             <motion.div
               ref={scope}
@@ -139,7 +144,7 @@ function App() {
               }}
               onAnimationComplete={() => {
                 setNavigationState(nextNavigationState.current);
-                setProblemIndex((problemIndex + 1) % problems.length);
+                setProblemIndex(problemIndex + 1);
                 animateWinCounter(
                   scopeWinCounter.current,
                   {
@@ -159,12 +164,12 @@ function App() {
               }}
             >
               <CustomChessboard
-                problem={problems[problemIndex]}
+                problem={problems[problemIndex % problems.length]}
                 afterFirstMove={afterFirstMove}
               />
             </motion.div>
             <motion.div
-              className="w-full flex justify-between items-center"
+              className="w-full flex justify-between items-center mb-4"
               exit={{
                 opacity: 0,
               }}
@@ -174,12 +179,15 @@ function App() {
             >
               <p>Goal: mate black in one move.</p>
               <img
-                className="text-xl font-bold mb-4"
+                className="text-xl font-bold"
                 data-tooltip-id="my-tooltip-inline"
-                data-tooltip-content={problems[problemIndex].hint}
+                data-tooltip-content={
+                  problems[problemIndex % problems.length].hint
+                }
                 src="./help.svg"
                 width={36}
                 height={36}
+                alt="help"
               />
             </motion.div>
             <Tooltip
@@ -204,12 +212,12 @@ function App() {
       {navigationState === NavigationState.SideProjects && (
         <SideProjects goBackHome={goBackHome} />
       )}
-      <div className="absolute bottom-0 right-0 mb-4 mr-4 text-center flex flex-col items-center">
+      <div className="absolute bottom-0 right-0 mb-8 mr-8 text-center flex flex-col items-center bg-white rounded-lg p-2">
         <motion.div
-          className="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center mr-8"
+          className="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center mb-2"
           ref={scopeWinCounter}
         >
-          <p>{problemIndex}</p>
+          <p className="font-bold">{problemIndex}</p>
         </motion.div>
         <img src="./white-king.svg" alt="white-king" width={40} />
       </div>
