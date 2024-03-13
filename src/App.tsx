@@ -10,6 +10,7 @@ import { Tooltip } from "react-tooltip";
 import { SocialIcon } from "react-social-icons";
 import SideProjects from "./components/SideProjects";
 import WaveText from "./components/WaveText";
+import Research from "./components/Research";
 
 const problems: Problem[] = [
   {
@@ -24,11 +25,12 @@ const problems: Problem[] = [
   },
 ];
 
-const enum NavigationState {
+export const enum NavigationState {
   Problem,
   ProblemTransition,
   Home,
   SideProjects,
+  Research,
 }
 
 const defaultOptions = {
@@ -75,9 +77,8 @@ function App() {
       return false;
     }
   };
-
-  const onSideProjectsClick = () => {
-    nextNavigationState.current = NavigationState.SideProjects;
+  const onSectionClick = (section: NavigationState) => {
+    nextNavigationState.current = section;
     setNavigationState(NavigationState.Problem);
   };
 
@@ -207,10 +208,13 @@ function App() {
         </div>
       )}
       {navigationState === NavigationState.Home && (
-        <Home onSideProjectsClick={onSideProjectsClick} />
+        <Home onSectionClick={onSectionClick} />
       )}
       {navigationState === NavigationState.SideProjects && (
         <SideProjects goBackHome={goBackHome} />
+      )}
+      {navigationState === NavigationState.Research && (
+        <Research goBackHome={goBackHome} />
       )}
       <div className="absolute bottom-0 right-0 mb-8 mr-8 text-center flex flex-col items-center bg-white rounded-lg p-2">
         <motion.div
