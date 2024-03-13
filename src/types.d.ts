@@ -14,3 +14,9 @@ type Research = {
   title: string;
   url: string;
 };
+
+type Problem = {
+  text: string;
+  problem: string;
+  hint: string;
+};

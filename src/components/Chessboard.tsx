@@ -3,17 +3,15 @@ import { Square, Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 
 interface CustomChessboardProps {
-  initialPosition?: string;
+  problem: Problem;
   afterFirstMove: (game: Chess) => boolean;
 }
 
 export default function CustomChessboard({
-  initialPosition,
+  problem,
   afterFirstMove,
 }: CustomChessboardProps) {
-  const game = useRef(
-    initialPosition ? new Chess(initialPosition) : new Chess()
-  );
+  const game = useRef(problem ? new Chess(problem.problem) : new Chess());
   const [gamePosition, setGamePosition] = useState<string>(game.current.fen());
 
   function makeAMove(
