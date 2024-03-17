@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
-
-const research: Array<Research> = [
-  {
-    title:
-      "Automatic Acquisition of a Repertoire of Diverse Grasping Trajectories through Behavior Shaping and Novelty Search",
-
-    url: "https://arxiv.org/abs/2205.08189",
-  },
-];
+import { research } from "../constants";
 
 interface ResearchProps {
   goBackHome: () => void;
@@ -15,7 +7,7 @@ interface ResearchProps {
 
 export default function Research({ goBackHome }: ResearchProps) {
   return (
-    <div>
+    <div className="w-2/3">
       <button onClick={goBackHome} className="text-blue-500">
         Go back home
       </button>

@@ -1,23 +1,5 @@
 import { motion } from "framer-motion";
-
-const works: Array<Work> = [
-  {
-    title: "Random Humans Lab",
-    description:
-      "Collecting empirical evidence regarding the deterministic nature of what seems to be randomness.",
-    url: "https://randomhumanslab.com",
-  },
-  {
-    title: "PanoramAI",
-    description: "Create and explore your own world.",
-    url: "https://panoramai.xyz",
-  },
-  {
-    title: "Tranceformer",
-    description: "Curate AI generated music and dig the ultimate banger.",
-    url: "https://tranceformer.xyz",
-  },
-];
+import { works } from "../constants";
 
 interface SideProjectsProps {
   goBackHome: () => void;
@@ -25,7 +7,7 @@ interface SideProjectsProps {
 
 export default function SideProjects({ goBackHome }: SideProjectsProps) {
   return (
-    <div>
+    <div className="w-2/3">
       <button onClick={goBackHome} className="text-blue-500">
         Go back home
       </button>

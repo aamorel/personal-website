@@ -11,19 +11,8 @@ import { SocialIcon } from "react-social-icons";
 import SideProjects from "./components/SideProjects";
 import WaveText from "./components/WaveText";
 import Research from "./components/Research";
-
-const problems: Problem[] = [
-  {
-    text: "Hello Wanderer, please solve this simple puzzle to enter",
-    problem: "1k5r/8/1K6/8/8/8/6b1/7Q w - - 0 1",
-    hint: "Black rook is undefended and the white queen is ready to take it out",
-  },
-  {
-    text: "You want to see more, solve this one",
-    problem: "1k2n2r/8/1K6/P7/8/8/6B1/1RR4Q w - - 0 1",
-    hint: "White king seems to be on the way",
-  },
-];
+import { problems } from "./constants";
+import { Analytics } from "@vercel/analytics/react";
 
 export const enum NavigationState {
   Problem,
@@ -225,6 +214,7 @@ function App() {
         </motion.div>
         <img src="./white-king.svg" alt="white-king" width={40} />
       </div>
+      <Analytics />
     </main>
   );
 }
