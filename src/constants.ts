@@ -33,6 +33,12 @@ export const works: Array<Work> = [
     description: "Curate AI generated music and dig the ultimate banger.",
     url: "https://tranceformer.xyz",
   },
+  {
+    title: "Cmd-learn",
+    description:
+      "Micro-learn while waiting for long-lasting terminal commands.",
+    url: "https://github.com/aamorel/cmd-learn",
+  },
 ];
 
 export const research: Array<Research> = [

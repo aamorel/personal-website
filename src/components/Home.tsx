@@ -32,6 +32,12 @@ export default function Home({ onSectionClick }: HomeProps) {
       >
         Check out my research
       </button>
+      <button
+        onClick={() => onSectionClick(NavigationState.Home)}
+        className="text-blue-500"
+      >
+        Give me more problems.
+      </button>
     </div>
   );
 }
