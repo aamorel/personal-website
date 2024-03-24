@@ -8,7 +8,7 @@ interface ResearchProps {
 export default function Research({ goBackHome }: ResearchProps) {
   return (
     <div className="w-2/3">
-      <button onClick={goBackHome} className="text-blue-500">
+      <button onClick={goBackHome} className="text-primary">
         Go back home
       </button>
       <h2 className="text-2xl font-bold mb-4">Research</h2>
@@ -22,7 +22,7 @@ export default function Research({ goBackHome }: ResearchProps) {
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <h3 className="text-xl font-bold">{research.title}</h3>
-            <a href={research.url} className="text-blue-500">
+            <a href={research.url} className="text-primary">
               {research.url}
             </a>
           </motion.li>

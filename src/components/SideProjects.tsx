@@ -8,7 +8,7 @@ interface SideProjectsProps {
 export default function SideProjects({ goBackHome }: SideProjectsProps) {
   return (
     <div className="w-2/3">
-      <button onClick={goBackHome} className="text-blue-500">
+      <button onClick={goBackHome} className="text-primary">
         Go back home
       </button>
       <h2 className="text-2xl font-bold mb-4">Side projects</h2>
@@ -23,7 +23,7 @@ export default function SideProjects({ goBackHome }: SideProjectsProps) {
           >
             <h3 className="text-xl font-bold">{work.title}</h3>
             <p>{work.description}</p>
-            <a href={work.url} className="text-blue-500">
+            <a href={work.url} className="text-primary">
               {work.url}
             </a>
           </motion.li>
